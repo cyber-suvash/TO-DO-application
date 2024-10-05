@@ -3,15 +3,23 @@ const idList = document.getElementById("list-container");
 const buttonid = document.querySelector('button').addEventListener('click', addTask); 
 
 let count = 0;
+count = idList.getElementsByTagName('li').length;
 
 function addTask() { 
     if (inputbox.value === '') {
-        alert("please add something you need to do!!");
-    } else {
-        createList();
+        alert("Please add something you need to do!");
+        return;
     }
+    
+    if (count >= 8) {
+        alert("You've reached the maximum limit of 8 tasks!");
+        inputbox.value = "";
+        return;
+    }
+    
+    createList();
     inputbox.value = "";
-    storeData(); 
+    storeData();
 }
 
 function createList() {
@@ -41,7 +49,8 @@ function storeData() {
             localStorage.setItem('data', idList.innerHTML)
         }
     
-function displayTask() {
+function displayTASK() {
             idList.innerHTML = localStorage.getItem("data")
         }
-displayTask()
+
+displayTASK();
