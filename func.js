@@ -41,6 +41,7 @@ function storeData() {
             localStorage.setItem('data', idList.innerHTML)
         }
     
-        function displayTASK() {
+function displayTask() {
             idList.innerHTML = localStorage.getItem("data")
         }
+displayTask()
