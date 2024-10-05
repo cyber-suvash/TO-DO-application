@@ -1,33 +1,17 @@
 const inputbox = document.getElementById("input-box");
 const idList = document.getElementById("list-container");
-const buttonid = document.querySelector('button').addEventListener('click', addTask);
+const buttonid = document.querySelector('button').addEventListener('click', addTask); 
 
-let count = 0; // Initialize counter
+let count = 0;
 
-// Function to update counter from current list items
-function updateCount() {
-    count = idList.getElementsByTagName('li').length;
-    console.log('Current count:', count);
-}
-
-// Initialize count on page load
-updateCount();
-
-function addTask() {
+function addTask() { 
     if (inputbox.value === '') {
-        alert("Please add something you need to do!");
-        return;
+        alert("please add something you need to do!!");
+    } else {
+        createList();
     }
-    
-    if (count >= 9) {
-        alert("You've reached the maximum limit of 8 tasks!");
-        inputbox.value = "";
-        return;
-    }
-    
-    createList();
     inputbox.value = "";
-    storeData();
+    storeData(); 
 }
 
 function createList() {
@@ -38,40 +22,25 @@ function createList() {
     let span = document.createElement('span');
     span.innerHTML = "\u00d7";
     li.appendChild(span);
-    
     count++;
-   
 }
 
-
-
-idList.addEventListener('click', function(ev) {
+idList.addEventListener('click', function(ev) { 
     if (ev.target.tagName === "LI") {
         ev.target.classList.toggle("checked");
-        storeData();
+        storeData(); 
     }
     else if (ev.target.tagName === "SPAN") {
         ev.target.parentElement.remove();
         count--;
-        storeData();
+        storeData(); 
     }
 });
 
 function storeData() {
-    localStorage.setItem('data', idList.innerHTML);
-    localStorage.setItem('taskCount', count.toString());
-}
-
-function displayTask() {
-    const savedData = localStorage.getItem("data");
-    if (savedData) {
-        idList.innerHTML = savedData;
-        // Restore count from localStorage
-        const savedCount = localStorage.getItem('taskCount');
-        count = savedCount ? parseInt(savedCount) : 0;
-       
-    }
-}
-
-// Initialize the display
-displayTask();
+            localStorage.setItem('data', idList.innerHTML)
+        }
+    
+        function displayTASK() {
+            idList.innerHTML = localStorage.getItem("data")
+        }
