@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Background image with blur effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(img/todo.jpg);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    z-index: -1;
+    filter: blur(5px); /* Add blur effect */
+    transform: scale(1.1); /* Prevent blur edges */
+}
+
+/* Add an overlay to enhance blur effect */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1); /* Subtle white overlay */
+    /* backdrop-filter: blur(1px); Additional blur for content */
+    z-index: -1;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 80vh;
+    background-color: transparent;
+    padding: 20px;
+    position: relative;
+}
+
+#to-do {
+    width: 100%;
+    max-width: 540px;
+    padding: 30px 50px 80px;
+    border-radius: 20px;
+    margin: 30px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    backdrop-filter: blur(5px); /* Blur effect for the container */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Rest of your CSS remains the same */
+#to-do h2 {
+    color: #002765;
+    font-size: 2rem;
+}
+
+.row {
+    border-radius: 30px;
+    background: #edeef0;
+    height: auto;
+    min-height: 10vh;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#input-box {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    font-weight: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+}
+
+button {
+    border: none;
+    outline: none;
+    padding: 10px 30px;
+    border-radius: 20px;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: "Caveat", cursive;
+}
+
+button:hover {
+    background: blueviolet;
+    transition: 0.4s;
+}
+
+ul li {
+    list-style: none;
+    font-family: "Caveat", cursive;
+    font-size: 28px;
+    padding: 10px 40px 10px 30px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    margin: 10px;
+    background: rgba(208, 189, 191, 0.9); /* Made slightly transparent */
+    border-radius: 20px;
+    word-break: break-word;
+    backdrop-filter: blur(5px); /* Blur effect for list items */
+}
+
+ul li::before {
+    content: "";
+    position: absolute;
+    height: 22px;
+    width: 21px;
+    background-image: url(img/checkbox-blank-circle-line.png);
+    background-size: cover;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+}
+
+ul li.checked {
+    color: #555;
+    text-decoration: line-through;
+}
+
+ul li.checked::before {
+    background-image: url(img/checkbox.png);
+}
+
+ul li span {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    font-weight: 900;
+    text-align: center;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ul li span:hover {
+    background: rgba(255, 0, 0, 0.8); /* Made slightly transparent */
+    border-radius: 50%;
+}
+
+/* Media Queries remain the same */
+@media screen and (max-width: 768px) {
+    #to-do {
+        padding: 20px 25px 40px;
+        margin: 15px;
+    }
+
+    #to-do h2 {
+        font-size: 1.5rem;
+    }
+
+    #input-box {
+        font-size: 20px;
+        width: 100%;
+    }
+
+    .row {
+        padding: 10px;
+    }
+
+    button {
+        width: 80px;
+        height: 35px;
+        font-size: 16px;
+        padding: 5px 15px;
+    }
+
+    ul li {
+        font-size: 22px;
+        padding: 8px 35px 8px 25px;
+    }
+
+    ul li span {
+        width: 30px;
+        height: 30px;
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #to-do {
+        padding: 15px 20px 30px;
+        margin: 10px;
+    }
+
+    #to-do h2 {
+        font-size: 1.2rem;
+    }
+
+    #input-box {
+        font-size: 18px;
+    }
+
+    ul li {
+        font-size: 18px;
+        padding: 6px 30px 6px 25px;
+    }
+
+    ul li::before {
+        height: 18px;
+        width: 18px;
+    }
+
+    ul li span {
+        width: 25px;
+        height: 25px;
+        font-size: 20px;
+    }
+}
