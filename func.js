@@ -19,7 +19,7 @@ function addTask() {
         return;
     }
     
-   
+    // Changed condition from count > 9 to count >= 9
     if (count >= 8) {
         alert("You've reached the maximum limit of 9 tasks!");
         inputbox.value = "";
@@ -41,15 +41,10 @@ function createList() {
     li.appendChild(span);
     
     count++;
-    updateTaskCounter();
+   
 }
 
-function updateTaskCounter() {
-    const counterElement = document.getElementById('task-counter');
-    if (counterElement) {
-        counterElement.textContent = `Tasks: ${count}/9`;
-    }
-}
+
 
 idList.addEventListener('click', function(ev) {
     if (ev.target.tagName === "LI") {
@@ -59,7 +54,6 @@ idList.addEventListener('click', function(ev) {
     else if (ev.target.tagName === "SPAN") {
         ev.target.parentElement.remove();
         count--;
-        updateTaskCounter();
         storeData();
     }
 });
@@ -76,7 +70,7 @@ function displayTask() {
         // Restore count from localStorage
         const savedCount = localStorage.getItem('taskCount');
         count = savedCount ? parseInt(savedCount) : 0;
-        updateTaskCounter();
+       
     }
 }
 
