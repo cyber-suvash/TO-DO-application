@@ -19,7 +19,7 @@ function addTask() {
         return;
     }
     
-    // Changed condition from count > 9 to count >= 9
+   
     if (count >= 8) {
         alert("You've reached the maximum limit of 9 tasks!");
         inputbox.value = "";
