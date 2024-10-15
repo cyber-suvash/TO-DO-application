@@ -68,7 +68,7 @@ function addTask() {
     
     createList();
     inputbox.value = "";
-    // storeData();
+    storeData();
 }
 
 function createList() {
@@ -112,12 +112,12 @@ function createList() {
 idList.addEventListener('click', function(ev) { 
     if (ev.target.tagName === "LI") {
         ev.target.classList.toggle("checked");
-        // storeData(); 
+        storeData(); 
     }
     else if (ev.target.tagName === "SPAN") {
         ev.target.parentElement.remove();
         count--;
-        // storeData(); 
+        storeData(); 
     }
 });
 
